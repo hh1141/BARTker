@@ -2,11 +2,15 @@ package com.honghaisen.bartinfo;
 
 
 import android.app.Fragment;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import java.util.HashMap;
 
 public class InfoFragment extends Fragment {
 
@@ -25,9 +29,16 @@ public class InfoFragment extends Fragment {
     private TextView len;
     private TextView col;
     private TextView bf;
+    private HashMap<String, String> map;
 
     public InfoFragment() {
         // Required empty public constructor
+        map = new HashMap<String, String>();
+        map.put("RED", "#ff0000");
+        map.put("YELLOW", "#ffff00");
+        map.put("BLUE", "#0066ff");
+        map.put("GREEN", "#009933");
+        map.put("ORANGE", "#ff9933");
     }
 
 
@@ -49,6 +60,7 @@ public class InfoFragment extends Fragment {
         dir.setText("direction: " + direction);
         len.setText("length: " + length);
         col.setText("color: " + color);
+        col.setTextColor(Color.parseColor(map.get(color)));
         bf.setText("bikeflag: " + bikeflag);
         seperator.setText("===============result" + num + "================");
 
